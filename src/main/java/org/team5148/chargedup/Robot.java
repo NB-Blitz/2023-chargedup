@@ -47,8 +47,18 @@ public class Robot extends TimedRobot {
 		Double xSpeed = driveController.getLeftX();
 		Double zRotation = driveController.getRightX(); 
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
+<<<<<<< Updated upstream
 	
 		
+=======
+
+		final int a = 1;
+		final in b = 2;
+		if(a<b){
+			System.out.println(a +" is less than " + b);
+		}
+		//test
+>>>>>>> Stashed changes
 	}
 }
 
