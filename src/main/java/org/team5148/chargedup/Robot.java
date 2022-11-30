@@ -46,8 +46,12 @@ public class Robot extends TimedRobot {
 		Double ySpeed = driveController.getLeftY();
 		Double xSpeed = driveController.getLeftX();
 		Double zRotation = driveController.getRightX(); 
+		//math
+		
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
-	
+
+		//Use this code
+		MDrive.drivePolar​(double magnitude, double angle, double zRotation);
 		
 	}
 }
