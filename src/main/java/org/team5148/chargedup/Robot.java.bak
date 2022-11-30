@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
 		Double zRotation = driveController.getRightX(); 
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
 	
-		//sensor data entered here
+		
 	}
 }
 
