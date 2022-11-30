@@ -23,6 +23,11 @@ public class Robot extends TimedRobot {
 	//NAVX sensor
 	AHRS ahrs = new AHRS(SerialPort.Port.kMXP); 
 
+	double accelX;
+	double accelY;
+	double accelZ;
+	double angle;
+
 	//xbox controller
 	XboxController driveController = new XboxController(0);
 
@@ -54,13 +59,13 @@ public class Robot extends TimedRobot {
 		Double zRotation = driveController.getRightX(); 
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
 	
-		/* sensor code example
+		// sensor code example
 		accelX = ahrs.getWorldLinearAccelX();
 		accelY = ahrs.getWorldLinearAccelY();
 		accelZ = ahrs.getWorldLinearAccelZ();
 		angle = ahrs.getAngle();
 		SmartDashboard.putNumber("accelX", accelX);
-		SmartDashboard.putNumber("angle", angle); */
+		SmartDashboard.putNumber("angle", angle); 
 	}
 }
 
