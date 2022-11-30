@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.XboxController;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.SerialPort;
 
 
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -16,6 +19,14 @@ public class Robot extends TimedRobot {
 	CANSparkMax frontRight = new CANSparkMax(3, MotorType.kBrushless);
 	CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
 	CANSparkMax backRight = new CANSparkMax(4, MotorType.kBrushless);
+
+	//NAVX sensor
+	AHRS ahrs = new AHRS(SerialPort.Port.kMXP); 
+
+	double accelX;
+	double accelY;
+	double accelZ;
+	double angle;
 
 	//xbox controller
 	XboxController driveController = new XboxController(0);
@@ -48,7 +59,13 @@ public class Robot extends TimedRobot {
 		Double zRotation = driveController.getRightX(); 
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
 	
-		//sensor data entered here
+		// sensor code example
+		accelX = ahrs.getWorldLinearAccelX();
+		accelY = ahrs.getWorldLinearAccelY();
+		accelZ = ahrs.getWorldLinearAccelZ();
+		angle = ahrs.getAngle();
+		SmartDashboard.putNumber("accelX", accelX);
+		SmartDashboard.putNumber("angle", angle); 
 	}
 }
 
