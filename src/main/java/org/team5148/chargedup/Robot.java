@@ -50,12 +50,16 @@ public class Robot extends TimedRobot {
 		//angle-math.atan2
 		//,math.2to
 		//a^2+b^2=c^2
+
+		double magnitude;
+		double angle;
 		
 		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
 
 		//Use this code
 		
-		MDrive.drivePolar​(double magnitude, double angle, double zRotation);
+		MDrive.drivePolar(magnitude, angle, zRotation);
+
 		
 	}
 }
