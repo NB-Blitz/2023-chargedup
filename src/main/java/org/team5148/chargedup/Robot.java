@@ -1,8 +1,10 @@
 package org.team5148.chargedup;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj.XboxController;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,6 +29,8 @@ public class Robot extends TimedRobot {
 	double accelY;
 	double accelZ;
 	double angle;
+
+	static double deadzone = 0.10;
 
 	//xbox controller
 	XboxController driveController = new XboxController(0);
@@ -57,7 +61,20 @@ public class Robot extends TimedRobot {
 		Double ySpeed = driveController.getLeftY();
 		Double xSpeed = driveController.getLeftX();
 		Double zRotation = driveController.getRightX(); 
-		MDrive.driveCartesian(ySpeed, xSpeed, zRotation);
+		// make conditionals to set deadzones
+
+		if(Math.abs(xSpeed) <= deadzone){
+			xSpeed = 0.0;
+		}
+
+		if(Math.abs(ySpeed) <= deadzone){
+			ySpeed = 0.0;
+		}
+
+		if(Math.abs(zRotation) <= deadzone){
+			zRotation = 0.0;
+		}
+		 MDrive.driveCartesian(ySpeed, xSpeed, zRotation); //but add the conditional variables
 	
 		// sensor code example
 		accelX = ahrs.getWorldLinearAccelX();
