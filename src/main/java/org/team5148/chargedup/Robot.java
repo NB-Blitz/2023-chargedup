@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
 	double accelZ;
 	double angle;
 
-	static double deadzone = 0.10;
+	static double deadzone = 0.20;
 
 	//xbox controller
 	XboxController driveController = new XboxController(0);
